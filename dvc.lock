@@ -31,3 +31,36 @@ stages:
       md5: 920add86fa4458a4040030a8b47d2862.dir
       size: 873398
       nfiles: 2
+  model_building:
+    cmd: python src/model_building.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 920add86fa4458a4040030a8b47d2862.dir
+      size: 873398
+      nfiles: 2
+    - path: src/model_building.py
+      hash: md5
+      md5: e9ff639440401e4317723ee0c3d21ca8
+      size: 387
+    outs:
+    - path: model.pkl
+      hash: md5
+      md5: 379cff61f02152b0897dfa675f2bae13
+      size: 7351631
+  model_evaluation:
+    cmd: python src/model_eval.py
+    deps:
+    - path: model.pkl
+      hash: md5
+      md5: 379cff61f02152b0897dfa675f2bae13
+      size: 7351631
+    - path: src/model_eval.py
+      hash: md5
+      md5: 4d641caa53e9c357b5c1d5e87e00426f
+      size: 732
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: 13fd04366c5509b1c3b22b77bf4cc38e
+      size: 90
